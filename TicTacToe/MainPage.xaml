@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:alohaKit="clr-namespace:AlohaKit.Layouts;assembly=AlohaKit.Layouts"
+             x:Class="TicTacToe.MainPage">
+
+        <Grid BackgroundColor="MistyRose">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+        <!--<StackLayout IsVisible="false" Grid.Row="1">
+        <Image x:Name="xImage"
+                   HeightRequest="75"/>
+
+        <Image x:Name="oImage" Source="other.png"
+                   HeightRequest="75" BackgroundColor="Red"/>
+        </StackLayout>-->
+        <StackLayout x:Name="TurnPanel"
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                <Label FontSize="54"
+                       Text="Player:"/>
+                <Image x:Name="PlayerImage"
+                   Source="xother.png"
+                   HeightRequest="75"/>
+            </StackLayout>
+
+        <Grid  x:Name="GameCanvas"
+                Grid.Row="1"
+                WidthRequest="300"
+                HeightRequest="300"
+                Margin="30">
+            <Image Source="grid.png"/>
+            <Grid x:Name="GameGrid" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"
+                         WidthRequest="300" BackgroundColor="Transparent"
+                         HeightRequest="300" ZIndex="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                </Grid.GestureRecognizers>
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="0" Grid.Column="0"/>
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="0" Grid.Column="1"/>
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="0" Grid.Column="2" />
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="1" Grid.Column="0" />
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="1" Grid.Column="1"/>
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="1" Grid.Column="2" />
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="2" Grid.Column="0" />
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="2" Grid.Column="1"/>
+                <Image IsVisible="true" WidthRequest="100" HeightRequest="100" Grid.Row="2" Grid.Column="2"/>
+            </Grid>
+        </Grid>
+
+            <Grid x:Name="EndScreen"
+              Grid.RowSpan="2"
+              Background="{StaticResource BackgroundColor}"
+              IsVisible="false">
+            <StackLayout Orientation="Vertical"
+                        VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal"
+                            HorizontalOptions="Center">
+                        <Label x:Name="ResultText"
+                               FontSize="54"
+                               Text="Winner: "
+                               Margin="0,0,0,15">
+
+                        </Label>
+                        <Image x:Name="WinnerImage"
+                           HeightRequest="75">
+
+                        </Image>
+                    </StackLayout>
+                    <Button Text="Play Again"
+                    Background="{StaticResource ButtonColor}"
+                    FontSize="34"
+                    WidthRequest="200"
+                    Margin="0,20,0,0"
+                    Padding="0,0,0,5"
+                    BorderColor="Black"
+                    Clicked="Button_Clicked"/>
+                </StackLayout>
+
+            </Grid>
+        </Grid>
+
+
+</ContentPage>
